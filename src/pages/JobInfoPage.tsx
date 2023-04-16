@@ -21,8 +21,9 @@ const JobInfoPage: FC<JobPagesProps> = ({ jobs }) => {
   const sectionHeader = "font-bold text-2xl";
 
   useEffect(() => {
+    
     setJobInfo(jobs.filter((job) => job.id === id)[0]);
-    console.log(jobs.filter((job) => job.id === id)[0]);
+
     return () => setJobInfo(null);
   }, [jobs]);
 

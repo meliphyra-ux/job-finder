@@ -10,7 +10,6 @@ const JobsPage: FC<JobPagesProps> = ({ jobs }) => {
   const [page, setPage] = useState<number>(1);
   const [pageCounter, setPageCounter] = useState<number[]>([]);
   const [displayedJobs, setDisplayedJobs] = useState<Job[]>([]);
-
   useEffect(() => {
     const startDisplayedItems = (page - 1) * 15;
     const endDisplayedItems = (page - 1) * 15 + 15;

@@ -1,6 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { fetchData, Job } from "./api_functions/fetchData";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import JobsPage from "./pages/JobsPage";
 import JobInfoPage from "./pages/JobInfoPage";
 
@@ -19,7 +21,6 @@ const App: FC = () => {
         <Route path="/:id" element={<JobInfoPage jobs={jobs} />} />
       </Routes>
     </BrowserRouter>
-    // <div className="font-bold">DAsdsadas</div>
   );
 };
 
