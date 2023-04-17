@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import Bookmark from "../assets/bookmark.svg";
 import { useNavigate } from "react-router-dom";
-import { calculateDaysAfterCreation } from "../time_functions/timeFunction";
+import { calculateDaysAfterCreation } from "../utils/time/calculateDate";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 

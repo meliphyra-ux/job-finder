@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Location } from "../api_functions/fetchData";
+import { Location } from "../utils/api/fetchData";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 interface LocationAndContactsProps {

@@ -1,16 +1,19 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Job } from "../api_functions/fetchData";
-import AdditionInfoBlocks from "../components/AdditionInfoBlocks";
-import { calculateDaysAfterCreation } from "../time_functions/timeFunction";
-import { JobPagesProps } from "./JobsPage";
+
+import { Job } from "../utils/api/fetchData";
+import AdditionInfoBlocks from "../components/AdditionInfoBlocks"
+;
+import { calculateDaysAfterCreation } from "../utils/time/calculateDate";
+
+import { JobPagesProps } from "./Jobs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import LocationAndContacts from "../components/LocationAndContacts";
 import Star from "../assets/star.png";
 import Share from "../assets/share.svg";
 
-const JobInfoPage: FC<JobPagesProps> = ({ jobs }) => {
+const JobInfo: FC<JobPagesProps> = ({ jobs }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -21,7 +24,6 @@ const JobInfoPage: FC<JobPagesProps> = ({ jobs }) => {
   const sectionHeader = "font-bold text-2xl";
 
   useEffect(() => {
-    
     setJobInfo(jobs.filter((job) => job.id === id)[0]);
 
     return () => setJobInfo(null);
@@ -165,4 +167,4 @@ const JobInfoPage: FC<JobPagesProps> = ({ jobs }) => {
   );
 };
 
-export default JobInfoPage;
+export default JobInfo;

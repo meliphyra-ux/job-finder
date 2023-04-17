@@ -1,13 +1,15 @@
-import { FC, useEffect, useState } from "react";
-import { fetchData, Job } from "./api_functions/fetchData";
+import { FC, useContext, useEffect, useState } from "react";
+import { fetchData, Job } from "./utils/api/fetchData";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import JobsPage from "./pages/JobsPage";
-import JobInfoPage from "./pages/JobInfoPage";
+import Jobs from "./pages/Jobs";
+import JobInfo from "./pages/JobInfo";
+import { JobsContext } from "./contexts/JobsContext";
 
 const App: FC = () => {
-  const [jobs, setJobs] = useState<Job[]>([]);
+  const { jobs, setJobs } = useContext(JobsContext)
+
   useEffect(() => {
     fetchData().then((res) => {
       setJobs(res);
@@ -17,8 +19,8 @@ const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<JobsPage jobs={jobs} />} />
-        <Route path="/:id" element={<JobInfoPage jobs={jobs} />} />
+        <Route path="/" element={<Jobs />} />
+        <Route path="/:id" element={<JobInfo />} />
       </Routes>
     </BrowserRouter>
   );
