@@ -5,7 +5,8 @@ import PageSwitcher from './PageSwitcher';
 import ArrowButton from './ArrowButton';
 
 const Pagination = () => {
-  const { visiblePage, setVisiblePage, amountOfPages } = useContext(JobsContext)
+  const { visiblePage, setVisiblePage, amountOfPages } =
+    useContext(JobsContext);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -40,7 +41,7 @@ const Pagination = () => {
         boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.12)',
       }}
     >
-      <ArrowButton variant='<' onClickHandler={previousPage}/>
+      <ArrowButton variant="<" onClickHandler={previousPage} />
       {Array(amountOfPages)
         .fill(1)
         .map((_, id) => (
@@ -51,7 +52,7 @@ const Pagination = () => {
             moveToPage={moveToPage}
           />
         ))}
-      <ArrowButton variant='>' onClickHandler={nextPage} />
+      <ArrowButton variant=">" onClickHandler={nextPage} />
     </div>
   );
 };

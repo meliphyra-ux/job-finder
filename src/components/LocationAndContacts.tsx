@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { Location } from "../utils/api/fetchData";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import { FC } from 'react';
+import { Location } from '../utils/api/fetchData';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 interface LocationAndContactsProps {
   location: Location;
   name: string;
@@ -17,16 +17,13 @@ const LocationAndContacts: FC<LocationAndContactsProps> = ({
   phone,
   email,
 }) => {
-  const zIndexText = "relative z-20 text-lg my-2";
   return (
-    <aside className="w-1/4 min-w-[300px]">
+    <aside className="w-1/4 min-w-[300px] mt-8 xl:">
       <div className="relative overflow-hidden bg-[#2A3047] px-10 py-8 text-white rounded-t-lg">
-        <div className="w-2/3 aspect-square bg-[#202336] absolute left-[-20%] bottom-1/2 translate-y-1/2 rounded-full z-10">
-          .
-        </div>
-        <h3 className={`${zIndexText} font-bold`}>{name}</h3>
-        <p className={`${zIndexText}`}>{address}</p>
-        <p className={`${zIndexText}`}>
+        <div className="w-2/3 aspect-square bg-[#202336] absolute left-[-20%] bottom-1/2 translate-y-1/2 rounded-full z-10"></div>
+        <h3 className="z-index-text">{name}</h3>
+        <p className="z-index-text">{address}</p>
+        <p className="z-index-text">
           {phone}, {email}
         </p>
       </div>
@@ -35,7 +32,7 @@ const LocationAndContacts: FC<LocationAndContactsProps> = ({
         effect="blur"
         wrapperClassName="max-w-full rounded-b-lg "
         className="rounded-b-lg "
-        src={`https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x400&maptype=roadmap&markers=color:white%7Clabel:%7C${location?.lat},${location?.long}&key=AIzaSyCwcYRTFNzAopP8WrIdO9X1wvlsQDmdusk&map_id=e445b78922fe296e`}
+        src={`https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x400&maptype=roadmap&markers=color:white%7Clabel:%7C${location?.lat},${location?.long}&key=${import.meta.env.VITE_GOOGLE_API_KEY}&map_id=e445b78922fe296e`}
         alt="Map"
       />
     </aside>

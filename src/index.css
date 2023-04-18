@@ -2,28 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .job-block {
+    @apply flex flex-row items-center w-[95%] max-w-[1400px] h-full xl:bg-[white] bg-[#EFF0F5] px-4 py-6 mb-2 rounded-lg relative;
+  }
+  .job-block-info {
+    @apply text-[#878D9D] my-2;
+  }
+  .z-index-text {
+    @apply relative z-20 text-lg my-2;
+  }
+  .job-info-button {
+    @apply px-[30px] py-[18px] rounded-lg text-center mt-8;
+  }
+  .section-header {
+    @apply font-bold text-2xl border-b-[1px] mt-8;
+  }
+}
+
 @font-face {
-  font-family: "Proxima Nova";
-  src: url("./assets/fonts/ProximaNova-Regular.eot");
-  src: url("./assets/fonts/ProximaNova-Regular.eot?#iefix")
-      format("embedded-opentype"),
-    url("./assets/fonts/ProximaNova-Regular.woff") format("woff"),
-    url("./assets/fonts/ProximaNova-Regular.ttf") format("truetype");
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/ProximaNova-Regular.eot');
+  src: url('./assets/fonts/ProximaNova-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/ProximaNova-Regular.woff') format('woff'),
+    url('./assets/fonts/ProximaNova-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "Proxima Nova";
-  src: url("./assets/fonts/ProximaNova-Bold.eot");
-  src: url("./assets/fonts/ProximaNova-Bold.eot?#iefix")
-      format("embedded-opentype"),
-    url("./assets/fonts/ProximaNova-Bold.woff") format("woff"),
-    url("./assets/fonts/ProximaNova-Bold.ttf") format("truetype");
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/ProximaNova-Bold.eot');
+  src: url('./assets/fonts/ProximaNova-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/ProximaNova-Bold.woff') format('woff'),
+    url('./assets/fonts/ProximaNova-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 * {
-  font-family: "Proxima Nova", sans-serif;
+  font-family: 'Proxima Nova', sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;

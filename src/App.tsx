@@ -8,7 +8,7 @@ import JobInfo from "./pages/JobInfo";
 import { JobsContext } from "./contexts/JobsContext";
 
 const App: FC = () => {
-  const { jobs, setJobs } = useContext(JobsContext)
+  const { setJobs } = useContext(JobsContext)
 
   useEffect(() => {
     fetchData().then((res) => {

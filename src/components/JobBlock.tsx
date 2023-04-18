@@ -1,18 +1,22 @@
-import { FC, useEffect, useState } from "react";
-import Bookmark from "../assets/bookmark.svg";
-import { useNavigate } from "react-router-dom";
-import { calculateDaysAfterCreation } from "../utils/time/calculateDate";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import { FC, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-interface JobBlockProps {
+import { calculateDaysAfterCreation } from '../utils/time/calculateDate';
+
+import Bookmark from '../assets/bookmark.svg';
+
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+type JobBlockProps = {
   id: string;
   pictrure: string;
   title: string;
   name: string;
   createdAt: string;
   address: string;
-}
+};
+
 const JobBlock: FC<JobBlockProps> = ({
   id,
   pictrure,
@@ -21,18 +25,24 @@ const JobBlock: FC<JobBlockProps> = ({
   createdAt,
   address,
 }) => {
-  const [createdDaysAgo, setCreatedDaysAgo] = useState<number>(0);
+  const [createdDaysAgo, setCreatedDaysAgo] = useState<string>('');
   const navigate = useNavigate();
+
   useEffect(() => {
-    let calculation = calculateDaysAfterCreation(createdAt);
-    setCreatedDaysAgo(calculation);
-  });
+    let daysAfterCreation = calculateDaysAfterCreation(createdAt);
+    setCreatedDaysAgo(daysAfterCreation);
+  }, []);
+
+  const navigateToJobInfo = () => {
+    navigate(`/${id}`);
+  };
+
   return (
     <figure
-      className="flex flex-row items-center w-[95%] max-w-[1400px] h-full xl:bg-[white] bg-[#EFF0F5] px-4 py-6 mb-2 rounded-lg relative "
-      onClick={() => navigate(`/${id}`)}
+      className="job-block"
+      onClick={navigateToJobInfo}
       style={{
-        boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.12)",
+        boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.12)',
       }}
     >
       <LazyLoadImage
@@ -46,22 +56,23 @@ const JobBlock: FC<JobBlockProps> = ({
       <div className="xl:my-0 my-6 w-3/4 cursor-pointer">
         <h3 className="font-bold text-base w-full xl:block hidden">{title}</h3>
         <h3 className="text-base w-full xl:hidden block">
-          {title.split(" ", 8).join(" ") + "..."}
+          {title.split(' ', 8).join(' ') + '...'}
         </h3>
-        <p className="text-[#878D9D] my-2">{name}</p>
-        <p className="text-[#878D9D] my-2">{address}</p>
+        <p className="job-block-info">{name}</p>
+        <p className="job-block-info">{address}</p>
       </div>
       <div className="flex flex-col min-h-[100px] w-fit items-end ml-auto text-base justify-between absolute top-4 right-4 xl:static">
-        <img onClick={(e) => {
-          e.stopPropagation()
-        }} className="xl:block hidden cursor-pointer" src={Bookmark} alt="" />
+        <img
+          onClick={(e) => {
+            e.stopPropagation();
+            alert('In development stage')
+          }}
+          className="xl:block hidden cursor-pointer"
+          src={Bookmark}
+          alt=""
+        />
         <p className="text-[#878D9D] ">
-          {"Created " +
-            `${
-              createdDaysAgo < 365
-                ? `${createdDaysAgo} days ago`
-                : `${Math.floor(createdDaysAgo / 365)} years ago`
-            }`}
+          {createdDaysAgo}
         </p>
       </div>
     </figure>
