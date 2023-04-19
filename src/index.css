@@ -18,6 +18,9 @@
   .section-header {
     @apply font-bold text-2xl border-b-[1px] mt-8;
   }
+  .shadow-box{
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
 }
 
 @font-face {

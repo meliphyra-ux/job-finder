@@ -34,24 +34,23 @@ const Pagination = () => {
     scrollToTop();
   };
 
+  const pageButtons = Array(amountOfPages)
+  .fill(1)
+  .map((_, id) => (
+    <PageSwitcher
+      key={id}
+      id={id + 1}
+      page={visiblePage}
+      moveToPage={moveToPage}
+    />
+  ))
+
   return (
     <div
-      className="flex flex-row justify-center items-center bg-white px-2 rounded-lg text-[#7D859C]"
-      style={{
-        boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.12)',
-      }}
+      className="flex flex-row justify-center items-center bg-white px-2 rounded-lg text-[#7D859C] shadow-box"
     >
       <ArrowButton variant="<" onClickHandler={previousPage} />
-      {Array(amountOfPages)
-        .fill(1)
-        .map((_, id) => (
-          <PageSwitcher
-            key={id}
-            id={id + 1}
-            page={visiblePage}
-            moveToPage={moveToPage}
-          />
-        ))}
+      {pageButtons}
       <ArrowButton variant=">" onClickHandler={nextPage} />
     </div>
   );

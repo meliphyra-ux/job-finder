@@ -1,9 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { calculateDaysAfterCreation } from '../utils/time/calculateDate';
-
-import Bookmark from '../assets/bookmark.svg';
+import { calculateDaysAfterCreation } from '../utils/functions/time/calculateDate';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -38,20 +36,14 @@ const JobBlock: FC<JobBlockProps> = ({
   };
 
   return (
-    <figure
-      className="job-block"
-      onClick={navigateToJobInfo}
-      style={{
-        boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.12)',
-      }}
-    >
+    <figure className="job-block shadow-box" onClick={navigateToJobInfo}>
       <LazyLoadImage
         className="aspect-square rounded-full min-w-[66px]"
         wrapperClassName="mr-[26px]"
         width={85}
         src={pictrure}
         effect="blur"
-        alt=""
+        alt={title}
       />
       <div className="xl:my-0 my-6 w-3/4 cursor-pointer">
         <h3 className="font-bold text-base w-full xl:block hidden">{title}</h3>
@@ -65,15 +57,13 @@ const JobBlock: FC<JobBlockProps> = ({
         <img
           onClick={(e) => {
             e.stopPropagation();
-            alert('In development stage')
+            alert('In development stage');
           }}
           className="xl:block hidden cursor-pointer"
-          src={Bookmark}
-          alt=""
+          src="./images/bookmark.svg"
+          alt="Bookmark"
         />
-        <p className="text-[#878D9D] ">
-          {createdDaysAgo}
-        </p>
+        <p className="text-[#878D9D]">{createdDaysAgo}</p>
       </div>
     </figure>
   );

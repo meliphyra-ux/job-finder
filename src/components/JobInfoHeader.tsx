@@ -1,39 +1,31 @@
-import Star from '../assets/star.png';
-import Share from '../assets/share.svg';
-
 import Button from './Button';
-import { onApply } from '../pages/JobInfo';
+import { onDevelopmentStage } from '../utils/functions/globalFunctions';
 
 const JobInfoHeader = () => {
   return (
     <>
-      <header className="border-b-[1px] flex justify-between items-center">
-        <h2 className="font-bold text-[28px]">Job details</h2>
-        <div className="flex justify-between">
-          <button className="mr-8 xl:flex hidden items-center">
-            <img className="inline-block mr-3" src={Star} alt="star" />
+      <header className='flex xl:flex-row flex-col justify-between items-start xl:items-center py-4 border-b-[1px]'>
+        <h1 className='text-3xl font-bold'>Job Details</h1>
+        <nav className='mt-4 xl:mt-0'>
+          <Button variant="alter" fn={onDevelopmentStage}>
+            <img
+              className="inline-block mr-3"
+              src="./images/star.png"
+              alt="star"
+            />
             Save to my list
-          </button>
-          <button className="xl:flex hidden items-center">
-            <img className="inline-block mr-3" src={Share} alt="share" />
+          </Button>
+          <Button variant="alter" fn={onDevelopmentStage}>
+            <img
+              className="inline-block mr-3"
+              src="./images/share.svg"
+              alt="share"
+            />
             Share
-          </button>
-        </div>
+          </Button>
+        </nav>
       </header>
-
-      <Button variant="normal" visible="media" fn={onApply}>
-        Apply now
-      </Button>
-      <div className="xl:hidden mt-8">
-        <button className="mr-8 inline-flex items-center">
-          <img className="inline-block mr-3" src={Star} alt="star" />
-          Save to my list
-        </button>
-        <button className="inline-flex items-center">
-          <img className="inline-block mr-3" src={Share} alt="share" />
-          Share
-        </button>
-      </div>
+      <Button variant='normal' visibility='media'>Apply now</Button>
     </>
   );
 };

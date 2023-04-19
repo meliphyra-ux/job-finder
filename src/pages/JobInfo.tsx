@@ -2,20 +2,17 @@ import { useEffect, useState, useContext, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Job } from '../utils/api/fetchData';
-import AdditionInfoBlocks from '../components/AdditionInfoBlocks';
-import { calculateDaysAfterCreation } from '../utils/time/calculateDate';
-
-import PicturesGroup from '../components/PicturesGroup';
-
-import LocationAndContacts from '../components/LocationAndContacts';
 import { JobsContext } from '../contexts/JobsContext';
-import JobDescription from '../components/JobDescription';
-import Button from '../components/Button';
-import JobInfoHeader from '../components/JobInfoHeader';
+import { calculateDaysAfterCreation } from '../utils/functions/time/calculateDate';
+import { onDevelopmentStage } from '../utils/functions/globalFunctions';
 
-export const onApply = () => {
-  alert('In development stage')
-}
+import AdditionInfoBlocks from '../components/AdditionInfoBlocks';
+import PicturesGroup from '../components/PicturesGroup';
+import LocationAndContacts from '../components/LocationAndContacts';
+
+import JobInfoDescription from '../components/JobInfoDescription';
+import JobInfoHeader from '../components/JobInfoHeader';
+import Button from '../components/Button';
 
 const JobInfo = () => {
   const navigate = useNavigate();
@@ -50,30 +47,28 @@ const JobInfo = () => {
     justify-center flex flex-col pt-6 px-4 items-center 
     xl:flex-row xl:pt-[56px] xl:px-[5%] xl:items-start"
     >
-      <div className="xl:mr-[82px] text-[#3A4562] max-w-[774px] w-full">
+      <div className="text-[#3A4562] max-w-[774px] w-full">
         <JobInfoHeader />
         <main className="w-full">
-          <JobDescription
+          <JobInfoDescription
             title={jobInfo.title}
             createdDaysAgo={createdDaysAgo}
             salary={jobInfo.salary}
             description={jobInfo.description}
           />
-          <Button variant="normal" fn={onApply}>Apply now</Button>
+          <Button variant="normal" fn={onDevelopmentStage}>
+            Apply now
+          </Button>
           <h2 className="section-header">Additional info</h2>
           <AdditionInfoBlocks
             array={jobInfo.employment_type}
             title="Employement type"
-            bgColor="rgba(161, 177, 219, 0.317343)"
-            textColor="#55699E"
-            borderColor="rgba(85, 105, 158, 0.3)"
+            theme="employement"
           />
           <AdditionInfoBlocks
             array={jobInfo.benefits}
             title="Benefits"
-            bgColor="rgba(255, 207, 0, 0.15)"
-            textColor="rgba(152, 139, 73, 1)"
-            borderColor="rgba(255, 207, 0, 1)"
+            theme="benefits"
           />
           <h2 className="section-header">Attached Images</h2>
           <PicturesGroup pictures={jobInfo.pictures} />

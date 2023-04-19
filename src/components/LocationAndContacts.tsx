@@ -18,7 +18,7 @@ const LocationAndContacts: FC<LocationAndContactsProps> = ({
   email,
 }) => {
   return (
-    <aside className="w-1/4 min-w-[300px] mt-8 xl:">
+    <aside className="w-1/4 min-w-[300px] mt-8 xl:ml-[82px]">
       <div className="relative overflow-hidden bg-[#2A3047] px-10 py-8 text-white rounded-t-lg">
         <div className="w-2/3 aspect-square bg-[#202336] absolute left-[-20%] bottom-1/2 translate-y-1/2 rounded-full z-10"></div>
         <h3 className="z-index-text">{name}</h3>
@@ -30,7 +30,7 @@ const LocationAndContacts: FC<LocationAndContactsProps> = ({
       <LazyLoadImage
         width={600}
         effect="blur"
-        wrapperClassName="max-w-full rounded-b-lg "
+        wrapperClassName="max-w-full rounded-b-lg"
         className="rounded-b-lg "
         src={`https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x400&maptype=roadmap&markers=color:white%7Clabel:%7C${location?.lat},${location?.long}&key=${import.meta.env.VITE_GOOGLE_API_KEY}&map_id=e445b78922fe296e`}
         alt="Map"

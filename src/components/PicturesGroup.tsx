@@ -10,7 +10,7 @@ const PicturesGroup: FC<PicturesGroupProps> = ({ pictures }) => {
   return (
     <div
       className="
-          max-w-full mt-[12px] mb-[30px] flex flex-row 
+          max-w-full mt-[12px] flex flex-row 
           xl:overflow-visible overflow-scroll
           "
     >
@@ -19,7 +19,7 @@ const PicturesGroup: FC<PicturesGroupProps> = ({ pictures }) => {
           key={picture + index}
           width={210}
           effect="blur"
-          wrapperClassName="mr-2 flex-none"
+          wrapperClassName="first:ml-0 ml-2 flex-none"
           className="aspect-video rounded-lg object-cover object-center"
           src={picture}
           alt="Attached images"
